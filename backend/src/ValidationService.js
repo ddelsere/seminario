@@ -22,6 +22,26 @@ const validateUrl = async (url) => {
     
 };
 
+const validateImage = async (image) =>{
+    axios.get('https://api.sightengine.com/1.0/check.json', {
+        params: {
+          'url': 'https://sightengine.com/assets/img/examples/example-prop-c1.jpg',
+          'models': 'genai',
+          'api_user': '{api_user}',
+          'api_secret': '{api_secret}',
+        }
+      })
+      .then(function (response) {
+        // on success: handle response
+        console.log(response.data);
+      })
+      .catch(function (error) {
+        // handle error
+        if (error.response) console.log(error.response.data);
+        else console.log(error.message);
+      });
+}
+
     // axios.get('https://api.sightengine.com/1.0/check.json', {
     //     params: {
     //         'url': 'https://sightengine.com/assets/img/examples/example-prop-c1.jpg',

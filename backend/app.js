@@ -1,15 +1,19 @@
 const express = require('express');
 const app = express();
-const port = 3000;
-const validationService = require('./src/ValidationService')
 
-// app.get('/', (req, res) => {
-//     res.send('Hello World!');
-// });
+const validationRoutes = require('./src/routes/validation.routes');
 
-app.listen(port, () => {
-    console.log(`Example app listening at http://localhost:${port}`);
-    validationService.validateUrl("");
+const cors = require("cors");
+const PORT = process.env.PORT || 3000;
+app.use(cors("*")) // This Cross Origin Handling
+app.use(express.urlencoded({ extended: true }));
+// This is required to handle urlencoded data
+app.use(express.json()); 
+
+app.use('/validate', validationRoutes);
+app.listen(PORT, () => {
+    console.log(`Example app listening at http://localhost:${PORT}`);
+    // validationService.validateUrl("");
 });
 
 module.exports = app;

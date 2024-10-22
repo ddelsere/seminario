@@ -1,5 +1,5 @@
 import Slider from "./Slider";
-
+import TutorialStyles from "./estilos/TutorialStyles.css";
 
 const TutorialCrypty = () => {
 

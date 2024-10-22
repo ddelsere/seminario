@@ -7,6 +7,7 @@ const Slide1 = () => {
             <div>
                 <h3>Es muy simple!</h3>
                 <h3>Simplemente dale a "Subir foto"</h3>
+                <img src="img_slide1.JPG" alt="xx" />
             </div>
         </div>
     );

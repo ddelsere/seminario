@@ -3,14 +3,15 @@ import Slide1 from './slides/Slide1';
 import Slide2 from './slides/Slide2';
 import Slide3 from './slides/Slide3';
 import Slide4 from './slides/Slide4';
+import TutorialStyles from './estilos/TutorialStyles.css';
 
 const Slider = () => {
     const [currentIndex, setCurrentIndex] = useState(0);
     const slides = [
-        <Slide1/>,
-        <Slide2/>,
-        <Slide3/>,
-        <Slide4/>
+        <Slide1 />,
+        <Slide2 />,
+        <Slide3 />,
+        <Slide4 />
     ];
 
     const nextSlide = () => {
@@ -23,9 +24,11 @@ const Slider = () => {
 
     return (
         <div>
-            <h2>{slides[currentIndex]}</h2>
-            <button onClick={prevSlide}>Anterior</button>
-            <button onClick={nextSlide}>Siguiente</button>
+            <div className='slider'>
+                <h2>{slides[currentIndex]}</h2>
+            </div>
+            <button className='prev' onClick={prevSlide}>←</button>
+            <button className='next' onClick={nextSlide}>→</button>
         </div>
     );
 };

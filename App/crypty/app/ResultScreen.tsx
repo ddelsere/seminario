@@ -19,12 +19,17 @@ export default function ResultScreen({ route }: { route: ResultScreenRouteProp }
     return (
         <View style={styles.container}>
             <Text style={styles.header}>Validar imagen</Text>
+            
             <Image source={{ uri: route.params.imageUri }} style={styles.image} />
             <Text style={styles.resultText}>Imagen validada.</Text>
+            <View style={styles.uploadContainer}>  
             <Text style={styles.resultText}>
-                {/* {`La imagen tiene altas probabilidades de ser ${route.params.validationResult >= 0.5 ? 'auténtica' : 'falsa'}.`} */}
+                              {/* {`La imagen tiene altas probabilidades de ser ${route.params.validationResult >= 0.5 ? 'auténtica' : 'falsa'}.`} */}
                 {`La imagen tiene ${route.params.validationResult}% probabilidades de ser generada con IA`}
+
             </Text>
+            </View>
+            <Text style={styles.resultText}></Text>
             <TouchableOpacity style={styles.validateButton} onPress={() => navigation.navigate('SelectImage')}>
                 <Text style={styles.buttonText}>Volver a iniciar</Text>
             </TouchableOpacity>
@@ -53,6 +58,17 @@ const styles = StyleSheet.create({
         borderRadius: 20,
         marginBottom: 20,
     },
+    uploadContainer: {
+        width: 300,
+        height: 100,
+        justifyContent: 'center',
+        alignItems: 'center',
+        backgroundColor: '#1c1c1c',
+        borderRadius: 20,
+        borderWidth: 1,
+        borderColor: 'green',
+        padding: 10,
+     },
     
     resultTextTrue: {
         fontSize: 18,

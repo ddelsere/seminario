@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
+import { View, Text, TouchableOpacity, StyleSheet, TextInput } from 'react-native';
 import * as ImagePicker from 'expo-image-picker';
 import { useNavigation } from '@react-navigation/native';
 import { StackNavigationProp } from '@react-navigation/stack';
@@ -39,10 +39,21 @@ export default function SelectImageScreen() {
           <Text style={styles.buttonText}>Subir foto</Text>
         </TouchableOpacity>
       </View>
+
+      
     </View>
   );
 }
+/* Validacion por URL
 
+<View style={styles.uploadContainer2}>
+      <TextInput style={styles.input} placeholder="URL" keyboardType="numeric" placeholderTextColor='lightblue' />
+      
+      <TouchableOpacity style={styles.button} onPress={()=>navigation.navigate('ValidateImage', { imageUri: result.assets[0].uri })}>
+          <Text style={styles.buttonText}>Validar URL</Text>
+        </TouchableOpacity>
+
+      </View>*/
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -66,6 +77,18 @@ const styles = StyleSheet.create({
     borderColor: '#5400FF',
     padding: 10,
   },
+  uploadContainer2: {
+    width: 200,
+    height: 150,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: '#1c1c1c',
+    borderRadius: 20,
+    borderWidth: 1,
+    borderColor: '#5400FF',
+    padding: 10,
+    marginTop: 10,
+  },
   button: {
     backgroundColor: '#00E3FF',
     paddingVertical: 10,
@@ -77,5 +100,13 @@ const styles = StyleSheet.create({
     color: '#181818',
     fontSize: 16,
     fontWeight: 'bold',
+  },
+  input: {
+    height: 40,
+    margin: 12,
+    borderWidth: 1,
+    padding: 10,
+    borderColor: '#5400FF',
+
   },
 });

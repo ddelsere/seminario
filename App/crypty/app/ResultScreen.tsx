@@ -53,6 +53,25 @@ const styles = StyleSheet.create({
         borderRadius: 20,
         marginBottom: 20,
     },
+    
+    resultTextTrue: {
+        fontSize: 18,
+        color: 'green',
+        marginBottom: 10,
+        textAlign: 'center',
+    },
+    resultTextInsecure: {
+        fontSize: 18,
+        color: 'yellow',
+        marginBottom: 10,
+        textAlign: 'center',
+    },
+    resultTextFalse: {
+        fontSize: 18,
+        color: 'red',
+        marginBottom: 10,
+        textAlign: 'center',
+    },
     resultText: {
         fontSize: 18,
         color: 'white',
@@ -76,3 +95,27 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
     },
 });
+
+/*
+if (${route.params.validationResult}<35)
+                {
+                <Text style={styles.resultTextTrue}>
+                    {}
+                    {`La imagen tiene ${route.params.validationResult}% probabilidades de ser generada con IA`}
+                </Text>
+                }
+            elif(${route.params.validationResult}>65)
+            {
+                <Text style={styles.resultTextFalse}>
+                    {}
+                    {`La imagen tiene ${route.params.validationResult}% probabilidades de ser generada con IA`}
+                </Text>
+            }
+            else
+            {
+                <Text style={styles.resultTextInsecure}>
+                    {}
+                    {`La imagen tiene ${route.params.validationResult}% probabilidades de ser generada con IA`}
+                </Text>
+    }
+*/

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, Text, Image, TouchableOpacity, StyleSheet, ActivityIndicator, Alert } from 'react-native';
+import { View, Text, Image, TouchableOpacity, StyleSheet, ActivityIndicator, Alert,ImageBackground } from 'react-native';
 import { RouteProp, useNavigation } from '@react-navigation/native';
 import { StackNavigationProp } from '@react-navigation/stack';
 
@@ -48,7 +48,9 @@ type RootStackParamList = {
     };
 
     return (
+        <View style={styles.container2}>
         <View style={styles.container}>
+        <ImageBackground source={require('../assets/images/bg.png')} style={styles.background}>
             <Text style={styles.header}>Validar imagen</Text>
             <Image source={{ uri: imageUri }} style={styles.image} />
             <Text style={styles.subText}>Imagen lista para validar</Text>
@@ -58,11 +60,29 @@ type RootStackParamList = {
             <TouchableOpacity onPress={() => navigation.navigate('SelectImage')}>
                 <Text style={styles.restartLink}>Volver a iniciar</Text>
             </TouchableOpacity>
-        </View>
+            </ImageBackground>
+            </View> 
+        </View>  
     );
 }
 
+
+
 const styles = StyleSheet.create({
+    container2: {
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center',
+        backgroundColor: '#181818',
+      },
+      background: {
+        flex: 1,
+        width: 500,
+        height: '100%',
+        justifyContent: 'center',
+        alignItems: 'center',
+        backgroundColor: '#181818',
+      },
     container: {
         flex: 1,
         justifyContent: 'center',
@@ -86,13 +106,13 @@ const styles = StyleSheet.create({
         marginBottom: 20,
     },
     validateButton: {
-        backgroundColor: '#00E3FF',
+        backgroundColor: '#5700AD',//#00E3FF Azul para volver atras
         paddingVertical: 10,
         paddingHorizontal: 40,
         borderRadius: 30,
     },
     buttonText: {
-        color: '#181818',
+        color: 'white',//#181818 Negro para volver atras
         fontSize: 16,
         fontWeight: 'bold',
     },

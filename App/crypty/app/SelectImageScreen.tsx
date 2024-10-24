@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, Text, TouchableOpacity, StyleSheet, TextInput } from 'react-native';
+import { View, Text, TouchableOpacity, StyleSheet, TextInput,ImageBackground } from 'react-native';
 import * as ImagePicker from 'expo-image-picker';
 import { useNavigation } from '@react-navigation/native';
 import { StackNavigationProp } from '@react-navigation/stack';
@@ -31,19 +31,23 @@ export default function SelectImageScreen() {
   };
 
   return (
-    <View style={styles.container}>
-      <Text style={styles.header}>Validar imagen</Text>
-      <View style={styles.uploadContainer}>
-        <Ionicons name="cloud-upload-outline" size={50} color="white" />
-        <TouchableOpacity style={styles.button} onPress={pickImage}>
-          <Text style={styles.buttonText}>Subir foto</Text>
-        </TouchableOpacity>
-      </View>
-
-      
-    </View>
+    <View style={styles.container2}>
+        <View style={styles.container}>
+        <ImageBackground source={require('../assets/images/bg.png')} style={styles.background}>
+          <Text style={styles.header}>Validar imagen</Text>
+          <View style={styles.uploadContainer}>
+            <Ionicons name="cloud-upload-outline" size={50} color="white" />
+            <TouchableOpacity style={styles.button} onPress={pickImage}>
+              <Text style={styles.buttonText}>Subir foto</Text>
+            </TouchableOpacity>
+           </View>
+    </ImageBackground>
+    </View> 
+    </View>   
   );
 }
+
+
 /* Validacion por URL
 
 <View style={styles.uploadContainer2}>
@@ -55,6 +59,20 @@ export default function SelectImageScreen() {
 
       </View>*/
 const styles = StyleSheet.create({
+  container2: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: '#181818',
+  },
+  background: {
+    flex: 1,
+    width: 500,
+    height: '100%',
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: '#181818',
+  },
   container: {
     flex: 1,
     justifyContent: 'center',
@@ -90,14 +108,14 @@ const styles = StyleSheet.create({
     marginTop: 10,
   },
   button: {
-    backgroundColor: '#00E3FF',
+    backgroundColor: '#5700AD',//#00E3FF Azul para volver atras
     paddingVertical: 10,
     paddingHorizontal: 20,
     borderRadius: 30,
     marginTop: 10,
   },
   buttonText: {
-    color: '#181818',
+    color: 'white',//#181818 Negro para volver atras
     fontSize: 16,
     fontWeight: 'bold',
   },

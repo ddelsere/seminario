@@ -16,24 +16,19 @@ type ResultScreenRouteProp = RouteProp<RootStackParamList, 'ResultScreen'>;
 export default function ResultScreen({ route }: { route: ResultScreenRouteProp }) {
     const navigation = useNavigation<ResultScreenNavigationProp>();
 
-
     return (
         <View style={styles.container2}>
-
         <View style={styles.container}>
         <ImageBackground source={require('../assets/images/bg.png')} style={styles.background}>
             <Text style={styles.header}>Validar imagen</Text>
-            
             <Image source={{ uri: route.params.imageUri }} style={styles.image} />
             <Text style={styles.resultText}>Imagen validada.</Text>
-              
             <Text style={styles.resultText}>
                     {/* {`La imagen tiene altas probabilidades de ser ${route.params.validationResult >= 0.5 ? 'auténtica' : 'falsa'}.`} */}
                     {ColorTexto(route.params.validationResult)}
             </Text>
             <Text style={styles.resultText}></Text>
             <TouchableOpacity style={styles.validateButton} onPress={() => navigation.navigate('SelectImage')}>
-            
                 <Text style={styles.buttonText}>Volver a iniciar</Text>
             </TouchableOpacity>
             </ImageBackground>

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, Text, TouchableOpacity, StyleSheet, TextInput,ImageBackground } from 'react-native';
+import { View, Text, TouchableOpacity, StyleSheet, TextInput,ImageBackground,Image } from 'react-native';
 import * as ImagePicker from 'expo-image-picker';
 import { useNavigation } from '@react-navigation/native';
 import { StackNavigationProp } from '@react-navigation/stack';
@@ -34,6 +34,7 @@ export default function SelectImageScreen() {
     <View style={styles.container2}>
         <View style={styles.container}>
         <ImageBackground source={require('../assets/images/bg.png')} style={styles.background}>
+        <Image source={require('../assets/images/CryptyLogoMed.png')} />
           <Text style={styles.header}>Validar imagen</Text>
           <View style={styles.uploadContainer}>
             <Ionicons name="cloud-upload-outline" size={50} color="white" />
@@ -41,6 +42,7 @@ export default function SelectImageScreen() {
               <Text style={styles.buttonText}>Subir foto</Text>
             </TouchableOpacity>
            </View>
+           
     </ImageBackground>
     </View> 
     </View>   
@@ -52,12 +54,13 @@ export default function SelectImageScreen() {
 
 <View style={styles.uploadContainer2}>
       <TextInput style={styles.input} placeholder="URL" keyboardType="numeric" placeholderTextColor='lightblue' />
-      
       <TouchableOpacity style={styles.button} onPress={()=>navigation.navigate('ValidateImage', { imageUri: result.assets[0].uri })}>
           <Text style={styles.buttonText}>Validar URL</Text>
         </TouchableOpacity>
 
-      </View>*/
+</View>
+*/
+
 const styles = StyleSheet.create({
   container2: {
     flex: 1,

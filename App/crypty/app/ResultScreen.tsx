@@ -37,12 +37,6 @@ export default function ResultScreen({ route }: { route: ResultScreenRouteProp }
             
     );
 }
-/* Background
-<View style={styles.container}>
-<ImageBackground source={require('../assets/images/bg.png')} style={styles.background}>
-</ImageBackground>
-</View>
-   */         
 
 const styles = StyleSheet.create({
     container: {
@@ -53,7 +47,7 @@ const styles = StyleSheet.create({
     },
     header: {
         fontSize: 24,
-        color: 'white',
+        color: 'purple',
         marginBottom: 20,
     },
     image: {

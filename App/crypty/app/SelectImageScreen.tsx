@@ -13,6 +13,7 @@ type RootStackParamList = {
 type SelectImageScreenNavigationProp = StackNavigationProp<RootStackParamList, 'SelectImage'>;
 
 export default function SelectImageScreen() {
+  const [url, setText] = useState('')
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
   const navigation = useNavigation<SelectImageScreenNavigationProp>();
 
@@ -42,6 +43,13 @@ export default function SelectImageScreen() {
               <Text style={styles.buttonText}>Subir foto</Text>
             </TouchableOpacity>
            </View>
+           <View style={styles.uploadContainer2}>
+            <TextInput style={styles.input}  placeholder="URL" placeholderTextColor='white' onChangeText={(url) => {setText(url)}} />
+            <TouchableOpacity style={styles.button} onPress={()=>navigation.navigate('ValidateImage', { imageUri: url })}>
+          <Text style={styles.buttonText}>Validar URL</Text>
+        </TouchableOpacity>
+
+</View>
            
     </ImageBackground>
     </View> 
@@ -128,6 +136,7 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     padding: 10,
     borderColor: '#5400FF',
+    color:'white',
 
   },
 });

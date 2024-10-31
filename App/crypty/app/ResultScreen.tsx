@@ -91,7 +91,7 @@ const styles = StyleSheet.create({
         backgroundColor: '#1c1c1c',
         borderRadius: 20,
         borderWidth: 1,
-        borderColor: 'Red',
+        borderColor: 'red',
         padding: 10,
      },
      uploadContainerInsecure: {

@@ -4,6 +4,7 @@ import * as ImagePicker from 'expo-image-picker';
 import { useNavigation } from '@react-navigation/native';
 import { StackNavigationProp } from '@react-navigation/stack';
 import { Ionicons } from '@expo/vector-icons';
+import isImageURL from 'image-url-validator';
 
 type RootStackParamList = {
   SelectImage: undefined;
@@ -56,6 +57,28 @@ export default function SelectImageScreen() {
     </View>   
   );
 }
+//
+//const ValidarUrl = (url:URL) => {
+//  if (isImageURL(url).then(is_image => {console.log(is_image) }))
+//    {}
+//  
+//  {
+//      return <View style={styles.uploadContainerTrue}> <Text style={styles.resultTextTrue}> 
+//      {/* {`La imagen tiene altas probabilidades de ser ${route.params.validationResult >= 0.5 ? 'auténtica' : 'falsa'}.`} */}
+//      {`La imagen tiene ${porcentaje}% probabilidades de ser generada con IA`}
+//      </Text> </View>
+//  }else if (porcentaje>66){
+//      return <View style={styles.uploadContainerFalse}><Text style={styles.resultTextFalse}>
+//      {/* {`La imagen tiene altas probabilidades de ser ${route.params.validationResult >= 0.5 ? 'auténtica' : 'falsa'}.`} */}
+//      {`La imagen tiene ${porcentaje}% probabilidades de ser generada con IA`}
+//     </Text> </View>
+//  }else{
+//      return<View style={styles.uploadContainerInsecure}> <Text style={styles.resultTextInsecure}> 
+//      {/* {`La imagen tiene altas probabilidades de ser ${route.params.validationResult >= 0.5 ? 'auténtica' : 'falsa'}.`} */}
+//      {`La imagen tiene ${porcentaje}% probabilidades de ser generada con IA`}
+//      </Text></View>
+//  }
+//}
 
 
 /* Validacion por URL

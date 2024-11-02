@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, Text, TouchableOpacity, StyleSheet, TextInput,ImageBackground,Image } from 'react-native';
+import { View, Text, TouchableOpacity, StyleSheet, TextInput, ImageBackground, Image } from 'react-native';
 import * as ImagePicker from 'expo-image-picker';
 import { useNavigation } from '@react-navigation/native';
 import { StackNavigationProp } from '@react-navigation/stack';
@@ -7,7 +7,9 @@ import { Ionicons } from '@expo/vector-icons';
 
 type RootStackParamList = {
   SelectImage: undefined;
+  ValidateUrl: { url: string };
   ValidateImage: { imageUri: string };
+  ResultScreen: { imageUri: string, validationResult: number };
 };
 
 type SelectImageScreenNavigationProp = StackNavigationProp<RootStackParamList, 'SelectImage'>;
@@ -33,27 +35,27 @@ export default function SelectImageScreen() {
 
   return (
     <View style={styles.container2}>
-        <View style={styles.container}>
+      <View style={styles.container}>
         <ImageBackground source={require('../assets/images/bg.png')} style={styles.background}>
-        <Image source={require('../assets/images/CryptyLogoMed.png')} />
+          <Image source={require('../assets/images/CryptyLogoMed.png')} />
           <Text style={styles.header}>Validar imagen</Text>
           <View style={styles.uploadContainer}>
             <Ionicons name="cloud-upload-outline" size={50} color="white" />
             <TouchableOpacity style={styles.button} onPress={pickImage}>
               <Text style={styles.buttonText}>Subir foto</Text>
             </TouchableOpacity>
-           </View>
-           <View style={styles.uploadContainer2}>
-            <TextInput style={styles.input}  placeholder="URL" placeholderTextColor='white' onChangeText={(url) => {setText(url)}} />
-            <TouchableOpacity style={styles.button} onPress={()=>navigation.navigate('ValidateImage', { imageUri: url })}>
-          <Text style={styles.buttonText}>Validar URL</Text>
-        </TouchableOpacity>
+          </View>
+          <View style={styles.uploadContainer2}>
+            <TextInput style={styles.input} placeholder="URL" placeholderTextColor='white' onChangeText={(url) => { setText(url) }} />
+            <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('ValidateUrl', { url: url })}>
+              <Text style={styles.buttonText}>Validar URL</Text>
+            </TouchableOpacity>
 
-</View>
-           
-    </ImageBackground>
-    </View> 
-    </View>   
+          </View>
+
+        </ImageBackground>
+      </View>
+    </View>
   );
 }
 
@@ -136,7 +138,7 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     padding: 10,
     borderColor: '#5400FF',
-    color:'white',
+    color: 'white',
 
   },
 });

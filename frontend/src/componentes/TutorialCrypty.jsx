@@ -5,8 +5,8 @@ const TutorialCrypty = () => {
 
 
     return(
-        <div>
-            <h1>Como usar Crypty</h1>
+        <div className="tutorial">
+            <h1 className="como-usar-crypty">Como usar Crypty</h1>
             {<Slider/>}
         </div>
     );

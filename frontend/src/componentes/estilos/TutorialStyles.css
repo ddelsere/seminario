@@ -1,17 +1,35 @@
+.tutorial {
+    display: flex; /* Usar flexbox */
+    flex-direction: column; /* Apilar elementos verticalmente */
+    justify-content: center; /* Centra verticalmente el contenido restante */
+    align-items: center; /* Centra horizontalmente */
+    height: 100vh; /* Ocupa toda la altura de la ventana */
+}
+
+.como-usar-crypty{
+    position: absolute;
+    top: 10%;
+}
+
+.slider-container {
+    display: flex; /* Usar flexbox para centrar el slider */
+    justify-content: center; /* Centra horizontalmente */
+    align-items: center; /* Centra verticalmente */
+    flex-grow: 1; /* Permite que el contenedor del slider ocupe el espacio restante */
+}
+
 .slider {
     position: relative; /* Necesario para posicionar los botones */
     background-color: rgba(36, 21, 105, 0.40); /* Color de fondo con opacidad */
     border: 2px solid darkviolet;
     border-radius: 8px;
     margin: 15px auto; /* Centra horizontalmente */
-    max-width: 90%; /* Limita el ancho máximo para dispositivos móviles */
-    padding-bottom: 30px;
+    max-width: 70%; /* Limita el ancho máximo para dispositivos móviles */
     text-align: center; /* Centra el contenido dentro del slider */
     display: flex; /* Usar flexbox para centrar el contenido */
     flex-direction: column; /* Apilar elementos verticalmente */
     justify-content: center; /* Centra verticalmente */
     align-items: center; /* Centra horizontalmente */
-    height: 80vh; /* Ajusta la altura según sea necesario */
 }
 
 .prev, .next {

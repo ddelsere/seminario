@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, Text, Image, TouchableOpacity, StyleSheet, ActivityIndicator, Alert,ImageBackground } from 'react-native';
+import { View, Text, Image, TouchableOpacity, StyleSheet, ActivityIndicator, Alert, ImageBackground } from 'react-native';
 import { RouteProp, useNavigation } from '@react-navigation/native';
 import { StackNavigationProp } from '@react-navigation/stack';
 
@@ -7,28 +7,41 @@ type RootStackParamList = {
     SelectImage: undefined;
     ValidateImage: { imageUri: string };
     ResultScreen: { imageUri: string, validationResult: number };
-  };
-  
-  type ValidateImageScreenNavigationProp = StackNavigationProp<RootStackParamList, 'ValidateImage'>;
-  type ValidateImageScreenRouteProp = RouteProp<RootStackParamList, 'ValidateImage'>;
-  
-  export default function ValidateImageScreen({ route }: { route: ValidateImageScreenRouteProp }) {
+};
+
+type ValidateImageScreenNavigationProp = StackNavigationProp<RootStackParamList, 'ValidateImage'>;
+type ValidateImageScreenRouteProp = RouteProp<RootStackParamList, 'ValidateImage'>;
+
+export default function ValidateImageScreen({ route }: { route: ValidateImageScreenRouteProp }) {
     const navigation = useNavigation<ValidateImageScreenNavigationProp>();
     const { imageUri } = route.params;
 
     const [isLoading, setIsLoading] = useState(false);
 
+    const uriToBlob = async (uri: string) => {
+        const response = await fetch(uri);
+        const blob = await response.blob();
+        return blob;
+    };
+
     const validateImage = async () => {
         setIsLoading(true);
+        // Convert the URI to a Blob
+        const imageBlob = await uriToBlob(imageUri);
+
+        // Create a FormData object and append the Blob
+        const formData = new FormData();
+        formData.append('image', imageBlob, 'image.jpg'); // The third argument is the file name
+
         try {
             console.log('validar')
-            const response = await fetch('http://localhost:3000/validate/url', {
+            const response = await fetch('http://localhost:3000/validate/image', {
                 method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ imageUri: imageUri, }),
+                body: formData,
             });
 
             const data = await response.json();
+            console.log('sarsa')
             setIsLoading(false);
 
             if (response.ok) {
@@ -49,20 +62,20 @@ type RootStackParamList = {
 
     return (
         <View style={styles.container2}>
-        <View style={styles.container}>
-        <ImageBackground source={require('../assets/images/bg.png')} style={styles.background}>
-            <Text style={styles.header}>Validar imagen</Text>
-            <Image source={{ uri: imageUri }} style={styles.image} />
-            <Text style={styles.subText}>Imagen lista para validar</Text>
-            <TouchableOpacity style={styles.validateButton} onPress={validateImage} disabled={isLoading}>
-                {isLoading ? <ActivityIndicator color="#fff" /> : <Text style={styles.buttonText}>Validar imagen</Text>}
-            </TouchableOpacity>
-            <TouchableOpacity onPress={() => navigation.navigate('SelectImage')}>
-                <Text style={styles.restartLink}>Volver a iniciar</Text>
-            </TouchableOpacity>
-            </ImageBackground>
-            </View> 
-        </View>  
+            <View style={styles.container}>
+                <ImageBackground source={require('../assets/images/bg.png')} style={styles.background}>
+                    <Text style={styles.header}>Validar imagen</Text>
+                    <Image source={{ uri: imageUri }} style={styles.image} />
+                    <Text style={styles.subText}>Imagen lista para validar</Text>
+                    <TouchableOpacity style={styles.validateButton} onPress={validateImage} disabled={isLoading}>
+                        {isLoading ? <ActivityIndicator color="#fff" /> : <Text style={styles.buttonText}>Validar imagen</Text>}
+                    </TouchableOpacity>
+                    <TouchableOpacity onPress={() => navigation.navigate('SelectImage')}>
+                        <Text style={styles.restartLink}>Volver a iniciar</Text>
+                    </TouchableOpacity>
+                </ImageBackground>
+            </View>
+        </View>
     );
 }
 
@@ -74,15 +87,15 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center',
         backgroundColor: '#181818',
-      },
-      background: {
+    },
+    background: {
         flex: 1,
         width: 500,
         height: '100%',
         justifyContent: 'center',
         alignItems: 'center',
         backgroundColor: '#181818',
-      },
+    },
     container: {
         flex: 1,
         justifyContent: 'center',

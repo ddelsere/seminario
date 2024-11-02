@@ -1,5 +1,7 @@
 // this example uses axios
 const axios = require('axios');
+const FormData = require('form-data');
+const fs = require('fs');
 
 const validateUrl = async (url) => {
     axios.get('https://api.sightengine.com/1.0/check.json', {
@@ -19,47 +21,43 @@ const validateUrl = async (url) => {
             if (error.response) console.log(error.response.data);
             else console.log(error.message);
         });
-    
+
 };
 
-const validateImage = async (image) =>{
-    axios.get('https://api.sightengine.com/1.0/check.json', {
-        params: {
-          'url': 'https://sightengine.com/assets/img/examples/example-prop-c1.jpg',
-          'models': 'genai',
-          'api_user': '{api_user}',
-          'api_secret': '{api_secret}',
+const validateImage = async (image) => {
+    data = new FormData();
+    data.append('media', fs.createReadStream(image));
+    data.append('models', 'genai');
+    data.append('api_user', '604104224');
+    data.append('api_secret', 'JGqjDsyEDLb9xTof5t2AFqffZSNKrLs2');
+
+
+    const response = await axios({
+        method: 'post',
+        url: 'https://api.sightengine.com/1.0/check.json',
+        data: data,
+        headers: data.getHeaders(),
+    });
+
+
+    const score = response.data.type.ai_generated * 100;
+    console.log('Score:', score);
+
+    // Delete the image after the request is complete
+    fs.unlink(image, (err) => {
+        if (err) {
+          console.error(`Error deleting file: ${err}`);
+        } else {
+          console.log(`Successfully deleted ${image}`);
         }
-      })
-      .then(function (response) {
-        // on success: handle response
-        console.log(response.data);
-      })
-      .catch(function (error) {
-        // handle error
-        if (error.response) console.log(error.response.data);
-        else console.log(error.message);
       });
+    return score; 
+
 }
 
-    // axios.get('https://api.sightengine.com/1.0/check.json', {
-    //     params: {
-    //         'url': 'https://sightengine.com/assets/img/examples/example-prop-c1.jpg',
-    //         'models': 'genai',
-    //         'api_user': '{api_user}',
-    //         'api_secret': '{api_secret}',
-    //     }
-    // })
-    //     .then(function (response) {
-    //         // on success: handle response
-    //         console.log(response.data);
-    //     })
-    //     .catch(function (error) {
-    //         // handle error
-    //         if (error.response) console.log(error.response.data);
-    //         else console.log(error.message);
-    //     });
+
 
 module.exports = {
-    validateUrl
+    validateUrl,
+    validateImage
 };

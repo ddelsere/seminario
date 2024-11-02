@@ -1,6 +1,8 @@
 const express = require('express');
 const app = express();
 
+
+
 const validationRoutes = require('./src/routes/validation.routes');
 
 const cors = require("cors");

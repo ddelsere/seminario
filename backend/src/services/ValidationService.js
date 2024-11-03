@@ -4,24 +4,17 @@ const FormData = require('form-data');
 const fs = require('fs');
 
 const validateUrl = async (url) => {
-    axios.get('https://api.sightengine.com/1.0/check.json', {
+    const response = await axios.get('https://api.sightengine.com/1.0/check.json', {
         params: {
-            'url': 'https://ichef.bbci.co.uk/ace/ws/640/cpsprodpb/A3DC/production/_127984914_mediaitem127984913.jpg.webp',
+            'url': url,
             'models': 'genai',
             'api_user': '604104224',
             'api_secret': 'JGqjDsyEDLb9xTof5t2AFqffZSNKrLs2',
         }
     })
-        .then(function (response) {
-            // on success: handle response
-            console.log(response.data);
-        })
-        .catch(function (error) {
-            // handle error
-            if (error.response) console.log(error.response.data);
-            else console.log(error.message);
-        });
-
+    const score = response.data.type.ai_generated * 100;
+    console.log('Score:', score);
+    return score;
 };
 
 const validateImage = async (image) => {

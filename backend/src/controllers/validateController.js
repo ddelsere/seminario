@@ -3,10 +3,11 @@ const validationService = require('../services/ValidationService');
 
 exports.validateUrl = async (req, res) => {
     console.log('validar url')
-    const { url } = req.body;
-    // const score = await validationService.validateUrl(url);
+    const url = req.body.url;
+    console.log(url)
+    const score = await validationService.validateUrl(url);
     // res.json(score);
-    res.status(200).json(2);
+    res.json(score);
 };
 
 
@@ -18,9 +19,9 @@ exports.validateImage = async (req, res) => {
         const image = req.file;
 
         // You can pass the file path to your validation service
-        
+
         const score = await validationService.validateImage(image.path);
-console.log(score)
+        console.log(score)
         // Respond with the validation result
         res.json(score);
     } catch (error) {

@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, TouchableOpacity, StyleSheet, ActivityIndicator } from 'react-native';
+import { View, Text, Image, TouchableOpacity, StyleSheet, ActivityIndicator, Alert, ImageBackground } from 'react-native';
 import { useNavigation, RouteProp } from '@react-navigation/native';
 import { StackNavigationProp } from '@react-navigation/stack';
 
@@ -33,13 +33,13 @@ export default function ValidateUrlScreen({ route }: { route: ValidateUrlScreenR
           url: route.params.url,
         }),
       });
-      const result = await response.json();
-      const validationResult = result.validationScore; // Assuming the API returns a number
+      const data = await response.json();
+      // const validationResult = result.validationScore; // Assuming the API returns a number
       setLoading(false);
       // Navigate to ResultScreen with the validation result
       navigation.navigate('ResultScreen', {
         imageUri: route.params.url, // Pass URL here if necessary
-        validationResult: validationResult,
+        validationResult: data,
       });
     } catch (error) {
       setLoading(false);
@@ -48,54 +48,75 @@ export default function ValidateUrlScreen({ route }: { route: ValidateUrlScreenR
   };
 
   return (
-    <View style={styles.container}>
-      <Text style={styles.header}>Validar URL</Text>
-      <Text style={styles.urlText}>{route.params.url}</Text>
-      <TouchableOpacity style={styles.validateButton} onPress={validateUrl}>
-        {loading ? (
-          <ActivityIndicator size="small" color="#fff" />
-        ) : (
-          <Text style={styles.buttonText}>Validar URL</Text>
-        )}
-      </TouchableOpacity>
-      <TouchableOpacity onPress={() => navigation.navigate('SelectImage')}>
-        <Text style={styles.restartText}>Volver a iniciar</Text>
-      </TouchableOpacity>
-    </View>
+    <View style={styles.container2}>
+            <View style={styles.container}>
+                <ImageBackground source={require('../assets/images/bg.png')} style={styles.background}>
+                    <Text style={styles.header}>Validar imagen</Text>
+                    <Image source={{ uri: route.params.url }} style={styles.image} />
+                    <Text style={styles.subText}>Imagen lista para validar</Text>
+                    <TouchableOpacity style={styles.validateButton} onPress={validateUrl} disabled={loading}>
+                        {loading ? <ActivityIndicator color="#fff" /> : <Text style={styles.buttonText}>Validar imagen</Text>}
+                    </TouchableOpacity>
+                    <TouchableOpacity onPress={() => navigation.navigate('SelectImage')}>
+                        <Text style={styles.restartLink}>Volver a iniciar</Text>
+                    </TouchableOpacity>
+                </ImageBackground>
+            </View>
+        </View>
   );
 }
 
 const styles = StyleSheet.create({
+  container2: {
+      flex: 1,
+      justifyContent: 'center',
+      alignItems: 'center',
+      backgroundColor: '#181818',
+  },
+  background: {
+      flex: 1,
+      width: 500,
+      height: '100%',
+      justifyContent: 'center',
+      alignItems: 'center',
+      backgroundColor: '#181818',
+  },
   container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#181818',
+      flex: 1,
+      justifyContent: 'center',
+      alignItems: 'center',
+      backgroundColor: '#181818',
   },
   header: {
-    fontSize: 24,
-    color: 'white',
-    marginBottom: 20,
+      fontSize: 24,
+      color: 'white',
+      marginBottom: 20,
   },
-  urlText: {
-    fontSize: 16,
-    color: 'white',
-    marginBottom: 20,
+  image: {
+      width: 250,
+      height: 250,
+      borderRadius: 10,
+      marginBottom: 20,
+  },
+  subText: {
+      color: 'white',
+      fontSize: 16,
+      marginBottom: 20,
   },
   validateButton: {
-    backgroundColor: '#00E3FF',
-    paddingVertical: 10,
-    paddingHorizontal: 20,
-    borderRadius: 30,
-    marginBottom: 20,
+      backgroundColor: '#5700AD',//#00E3FF Azul para volver atras
+      paddingVertical: 10,
+      paddingHorizontal: 40,
+      borderRadius: 30,
   },
   buttonText: {
-    color: '#181818',
-    fontSize: 16,
-    fontWeight: 'bold',
+      color: 'white',//#181818 Negro para volver atras
+      fontSize: 16,
+      fontWeight: 'bold',
   },
-  restartText: {
-    color: '#00E3FF',
-    textDecorationLine: 'underline',
+  restartLink: {
+      color: '#00E3FF',
+      marginTop: 20,
+      textDecorationLine: 'underline',
   },
 });

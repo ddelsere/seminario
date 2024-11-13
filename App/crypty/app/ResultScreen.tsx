@@ -80,7 +80,7 @@ const styles = StyleSheet.create({
         backgroundColor: '#1c1c1c',
         borderRadius: 20,
         borderWidth: 1,
-        borderColor: 'green',
+        borderColor: 'lime',
         padding: 10,
      },
      uploadContainerFalse: {
@@ -108,7 +108,7 @@ const styles = StyleSheet.create({
     
     resultTextTrue: {
         fontSize: 18,
-        color: 'green',
+        color: 'lime',
         marginBottom: 10,
         textAlign: 'center',
     },

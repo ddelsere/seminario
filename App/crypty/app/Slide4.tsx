@@ -4,7 +4,7 @@ import { View, Text, Image, TouchableOpacity, StyleSheet, ActivityIndicator, Ale
 const Slide1 = () => {
 
     return(
-        <View style={styles.container2}>
+        
         <View style={styles.container}>
             <Text style={styles.header}>Y listo!</Text>
             
@@ -14,7 +14,7 @@ const Slide1 = () => {
              />
              <Text style={styles.header2}>Recorda que tambien se puede validar mediante URL</Text>
         </View>
-        </View>
+
     );
 }
 
@@ -40,26 +40,36 @@ const styles = StyleSheet.create({
         backgroundColor: '#181818',
     },
     container: {
-        flex: 1,
+        width: 300,
+        height: 400,
         justifyContent: 'center',
         alignItems: 'center',
-        backgroundColor: '#181818',
+        backgroundColor: '#1c1c1c',
+        borderRadius: 20,
+        borderWidth: 1,
+        borderColor: '#5400FF',
+        padding: 10,
     },
     header: {
         fontSize: 24,
         color: 'white',
         marginBottom: 20,
+        textAlign: 'center',
     },
     header2: {
         fontSize: 20,
         color: 'white',
         marginBottom: 20,
+        textAlign: 'center',
     },
     image: {
-        width: 350,
+        width: 250,
         height: 250,
         borderRadius: 10,
         marginBottom: 20,
+        resizeMode:'contain',
+        borderColor: '#fa8072',
+        borderWidth: 2,
     },
     subText: {
         color: 'white',

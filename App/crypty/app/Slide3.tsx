@@ -4,7 +4,7 @@ import { View, Text, Image, TouchableOpacity, StyleSheet, ActivityIndicator, Ale
 const Slide1 = () => {
 
     return(
-        <View style={styles.container2}>
+
         <View style={styles.container}>
             <Text style={styles.header}>Presiona validar imagen</Text>
             <Image
@@ -12,7 +12,7 @@ const Slide1 = () => {
             source={require('../assets/images/Tuto3.png')}
              />
         </View>
-        </View>
+
     );
 }
 
@@ -38,10 +38,15 @@ const styles = StyleSheet.create({
         backgroundColor: '#181818',
     },
     container: {
-        flex: 1,
+        width: 300,
+        height: 400,
         justifyContent: 'center',
         alignItems: 'center',
-        backgroundColor: '#181818',
+        backgroundColor: '#1c1c1c',
+        borderRadius: 20,
+        borderWidth: 1,
+        borderColor: '#5400FF',
+        padding: 10,
     },
     header: {
         fontSize: 24,
@@ -53,6 +58,8 @@ const styles = StyleSheet.create({
         height: 250,
         borderRadius: 10,
         marginBottom: 20,
+        borderColor: '#fa8072',
+        borderWidth: 2,
     },
     subText: {
         color: 'white',

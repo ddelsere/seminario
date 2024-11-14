@@ -22,8 +22,9 @@ export default function TutorialCrypty({ route }: { route: TutorialCryptyRoutePr
         <View style={styles.container2}>
             <View style={styles.container}>
                 <ImageBackground source={require('../assets/images/bg.png')} style={styles.background}>
-                
+                <View style={styles.container3}>
                 <Text style={styles.header}>Como usar Crypty</Text>
+                </View>
                     {<Slider/>}
 
             <TouchableOpacity onPress={() => navigation.navigate('SelectImage')}>
@@ -44,6 +45,13 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center',
         backgroundColor: '#181818',
+        height: '100%',
+    },
+    container3: {
+        flex: 0.2,
+        justifyContent: 'flex-end',
+        alignItems: 'flex-end',
+        backgroundColor: 'transparent',
     },
     background: {
         flex: 1,
@@ -58,11 +66,13 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center',
         backgroundColor: '#181818',
+        height: '80%',
     },
     header: {
         fontSize: 24,
         color: 'white',
         marginBottom: 20,
+        textAlign: 'center',
     },
     image: {
         width: 250,

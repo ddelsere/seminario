@@ -25,15 +25,16 @@ const Slider = () => {
     };
 
     return (
-        <View style={styles.container2}>
+        
         <View style={styles.container}>
-            <div className='slider'>
+            
             <Text style={styles.header}>{slides[currentIndex]}</Text>
-            </div>
+            <View style={styles.fixToText}>
             <button className='prev' onClick={prevSlide}>←</button>
             <button className='next' onClick={nextSlide}>→</button>
+            </View>
         </View>
-        </View>
+        
     );
 };
 
@@ -41,6 +42,15 @@ export default Slider;
 
 
 const styles = StyleSheet.create({
+    fixToText: {
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        alignItems: 'center',
+        backgroundColor: '#1c1c1c',
+        borderRadius: 20,
+        borderWidth: 1,
+        padding: 10,
+      },
     container2: {
         flex: 1,
         justifyContent: 'center',
@@ -59,12 +69,13 @@ const styles = StyleSheet.create({
         flex: 1,
         justifyContent: 'center',
         alignItems: 'center',
-        backgroundColor: '#181818',
+        backgroundColor: 'transparent',
     },
     header: {
         fontSize: 24,
         color: 'white',
         marginBottom: 20,
+        textAlign: 'center',
     },
     image: {
         width: 250,

@@ -7,9 +7,11 @@ import { Ionicons } from '@expo/vector-icons';
 
 type RootStackParamList = {
   SelectImage: undefined;
+  TutorialCrypty: undefined;
   ValidateUrl: { url: string };
   ValidateImage: { imageUri: string };
   ResultScreen: { imageUri: string, validationResult: number };
+  MasInfo: undefined;
 };
 
 type SelectImageScreenNavigationProp = StackNavigationProp<RootStackParamList, 'SelectImage'>;
@@ -18,6 +20,7 @@ export default function SelectImageScreen() {
   const [url, setText] = useState('')
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
   const navigation = useNavigation<SelectImageScreenNavigationProp>();
+
 
   const pickImage = async () => {
     let result = await ImagePicker.launchImageLibraryAsync({
@@ -46,13 +49,17 @@ export default function SelectImageScreen() {
             </TouchableOpacity>
           </View>
           <View style={styles.uploadContainer2}>
-            <TextInput style={styles.input} placeholder="URL" placeholderTextColor='white' onChangeText={(url) => { setText(url) }} />
+            <TextInput style={styles.input} placeholder="URL de la imagen" placeholderTextColor='white' onChangeText={(url) => { setText(url) }} />
             <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('ValidateUrl', { url: url })}>
-              <Text style={styles.buttonText}>Validar URL</Text>
+              <Text style={styles.buttonText}>Validar Foto</Text>
             </TouchableOpacity>
 
           </View>
-
+          <View style={styles.fixToText}>
+          <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('TutorialCrypty')}><Text style={styles.buttonText}>Tutorial</Text></TouchableOpacity>
+          <Text style={styles.buttonText}> </Text>
+          <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('MasInfo')}><Text style={styles.buttonText}>FAQ</Text></TouchableOpacity>
+          </View>
         </ImageBackground>
       </View>
     </View>
@@ -72,6 +79,10 @@ export default function SelectImageScreen() {
 */
 
 const styles = StyleSheet.create({
+  fixToText: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+  },
   container2: {
     flex: 1,
     justifyContent: 'center',

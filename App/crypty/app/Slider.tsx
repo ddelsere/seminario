@@ -4,6 +4,8 @@ import Slide2 from './Slide2';
 import Slide3 from './Slide3';
 import Slide4 from './Slide4';
 import { View, Text, Image, TouchableOpacity, StyleSheet, ActivityIndicator, Alert, ImageBackground } from 'react-native';
+import FontAwesome from '@expo/vector-icons/FontAwesome';
+import AntDesign from '@expo/vector-icons/AntDesign';
 
 /*import TutorialStyles from './estilos/TutorialStyles.css';*/
 
@@ -30,8 +32,8 @@ const Slider = () => {
             
             <Text style={styles.header}>{slides[currentIndex]}</Text>
             <View style={styles.fixToText}>
-            <button className='prev' onClick={prevSlide}>←</button>
-            <button className='next' onClick={nextSlide}>→</button>
+            <AntDesign.Button name="leftcircle" size={24} color="#5700AD" backgroundColor="#1c1c1c" onPress={nextSlide}/>
+            <AntDesign.Button name="rightcircle" size={24} color="#5700AD" backgroundColor="#1c1c1c" onPress={nextSlide}/>
             </View>
         </View>
         
@@ -65,6 +67,13 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         backgroundColor: '#181818',
     },
+    button: {
+        backgroundColor: '#5700AD',//#00E3FF Azul para volver atras
+        paddingVertical: 10,
+        paddingHorizontal: 20,
+        borderRadius: 30,
+        marginTop: 10,
+      },
     container: {
         flex: 1,
         justifyContent: 'center',

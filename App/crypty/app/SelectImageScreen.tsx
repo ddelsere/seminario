@@ -4,6 +4,7 @@ import * as ImagePicker from 'expo-image-picker';
 import { useNavigation } from '@react-navigation/native';
 import { StackNavigationProp } from '@react-navigation/stack';
 import { Ionicons } from '@expo/vector-icons';
+import { useFocusEffect } from '@react-navigation/native';
 
 type RootStackParamList = {
   SelectImage: undefined;
@@ -17,10 +18,16 @@ type RootStackParamList = {
 type SelectImageScreenNavigationProp = StackNavigationProp<RootStackParamList, 'SelectImage'>;
 
 export default function SelectImageScreen() {
-  const [url, setText] = useState('')
+  const [url, setUrl] = useState('');
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
   const navigation = useNavigation<SelectImageScreenNavigationProp>();
 
+  useFocusEffect(
+    React.useCallback(() => {
+      // Clear the URL input when the screen is focused
+      setUrl('');
+    }, [])
+  );
 
   const pickImage = async () => {
     let result = await ImagePicker.launchImageLibraryAsync({
@@ -49,16 +56,34 @@ export default function SelectImageScreen() {
             </TouchableOpacity>
           </View>
           <View style={styles.uploadContainer2}>
-            <TextInput style={styles.input} placeholder="URL de la imagen" placeholderTextColor='white' onChangeText={(url) => { setText(url) }} />
-            <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('ValidateUrl', { url: url })}>
+            <TextInput
+              style={styles.input}
+              placeholder="Enlace web de la imagen"
+              placeholderTextColor="white"
+              value={url}
+              onChangeText={setUrl}
+            />
+            <TouchableOpacity
+              style={styles.button}
+              onPress={() => navigation.navigate('ValidateUrl', { url })}
+            >
               <Text style={styles.buttonText}>Validar Foto</Text>
             </TouchableOpacity>
-
           </View>
           <View style={styles.fixToText}>
-          <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('TutorialCrypty')}><Text style={styles.buttonText}>Tutorial</Text></TouchableOpacity>
-          <Text style={styles.buttonText}> </Text>
-          <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('MasInfo')}><Text style={styles.buttonText}>FAQ</Text></TouchableOpacity>
+            <TouchableOpacity
+              style={styles.button}
+              onPress={() => navigation.navigate('TutorialCrypty')}
+            >
+              <Text style={styles.buttonText}>Tutorial</Text>
+            </TouchableOpacity>
+            <Text style={styles.buttonText}> </Text>
+            <TouchableOpacity
+              style={styles.button}
+              onPress={() => navigation.navigate('MasInfo')}
+            >
+              <Text style={styles.buttonText}>FAQ</Text>
+            </TouchableOpacity>
           </View>
         </ImageBackground>
       </View>
@@ -67,16 +92,7 @@ export default function SelectImageScreen() {
 }
 
 
-/* Validacion por URL
 
-<View style={styles.uploadContainer2}>
-      <TextInput style={styles.input} placeholder="URL" keyboardType="numeric" placeholderTextColor='lightblue' />
-      <TouchableOpacity style={styles.button} onPress={()=>navigation.navigate('ValidateImage', { imageUri: result.assets[0].uri })}>
-          <Text style={styles.buttonText}>Validar URL</Text>
-        </TouchableOpacity>
-
-</View>
-*/
 
 const styles = StyleSheet.create({
   fixToText: {

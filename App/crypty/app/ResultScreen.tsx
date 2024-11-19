@@ -180,12 +180,13 @@ const styles = StyleSheet.create({
 
 
 const ColorTexto = (porcentaje:number) => {
+    const navigation = useNavigation<ResultScreenNavigationProp>();
     if (porcentaje<33){
         return <View style={styles.uploadContainerTrue}> <Text style={styles.resultTextTrue}> 
         
         {/* {`La imagen tiene altas probabilidades de ser ${route.params.validationResult >= 0.5 ? 'auténtica' : 'falsa'}.`} */}
         {`La imagen tiene ${porcentaje}% probabilidades de ser generada con IA  `}
-        <TouchableOpacity style={styles.validateButton2} >
+        <TouchableOpacity style={styles.validateButton2} onPress={() => navigation.navigate('MasInfo')} >
             <AntDesign name="questioncircleo" size={15} color="orange" />
         </TouchableOpacity>
         </Text></View>
@@ -193,7 +194,7 @@ const ColorTexto = (porcentaje:number) => {
         return <View style={styles.uploadContainerFalse}><Text style={styles.resultTextFalse}>
         {/* {`La imagen tiene altas probabilidades de ser ${route.params.validationResult >= 0.5 ? 'auténtica' : 'falsa'}.`} */}
         {`La imagen tiene ${porcentaje}% probabilidades de ser generada con IA`}
-        <TouchableOpacity style={styles.validateButton2} >
+        <TouchableOpacity style={styles.validateButton2} onPress={() => navigation.navigate('MasInfo')}>
             <AntDesign name="questioncircleo" size={15} color="black" />
         </TouchableOpacity>
         </Text></View>
@@ -201,7 +202,7 @@ const ColorTexto = (porcentaje:number) => {
         return<View style={styles.uploadContainerInsecure}> <Text style={styles.resultTextInsecure}> 
         {/* {`La imagen tiene altas probabilidades de ser ${route.params.validationResult >= 0.5 ? 'auténtica' : 'falsa'}.`} */}
         {`La imagen tiene ${porcentaje}% probabilidades de ser generada con IA`}
-        <TouchableOpacity style={styles.validateButton2} >
+        <TouchableOpacity style={styles.validateButton2} onPress={() => navigation.navigate('MasInfo')}>
             <AntDesign name="questioncircleo" size={15} color="black" />
         </TouchableOpacity>
         </Text></View>

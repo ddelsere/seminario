@@ -1,7 +1,8 @@
 import React from 'react';
-import { View, Text, Image, TouchableOpacity, StyleSheet,ImageBackground , ActivityIndicator } from 'react-native';
+import { View, Text, Image, TouchableOpacity, StyleSheet,ImageBackground , ActivityIndicator,ScrollView } from 'react-native';
 import { useNavigation, RouteProp } from '@react-navigation/native';
 import { StackNavigationProp } from '@react-navigation/stack';
+
 
 
 type RootStackParamList = {
@@ -18,34 +19,90 @@ export default function MasInfo({ route }: { route: MasInfoRouteProp }) {
     const navigation = useNavigation<MasInfoNavigationProp>();
 
     return (
-        <View style={styles.container2}>
+
+        <View style={styles.container2}>  
         <View style={styles.container}>
         <ImageBackground source={require('../assets/images/bg.png')} style={styles.background}>
-
-        <View style={styles.ContainerP}>
-              <Text style={styles.header}>Pregunta 1</Text>
+        <View style={styles.fixToTextC}><View style={styles.fixToTextP}>
+              <Text style={styles.header}>¿Qué hace única a Crypty en la detección de imágenes generadas por inteligencia artificial?</Text>
           </View>
-          <View style={styles.ContainerR}>
-              <Text style={styles.Text}>Respuesta 1</Text>
+          
+          <View style={styles.fixToTextR}>
+              <Text style={styles.Text}>Crypty se destaca por su avanzada tecnología de detección, que identifica si una imagen ha sido creada o modificada con inteligencia artificial. Nuestro sistema detecta patrones y texturas que pueden pasar desapercibidos para el ojo humano, brindando una precisión excepcional en la identificación de contenido sintético.</Text>
+          </View></View>
+          <View style={styles.fixToTextC}><View style={styles.fixToTextP}>
+              <Text style={styles.header}>¿Cómo asegura Crypty que los resultados de detección sean confiables?</Text>
           </View>
-          <View style={styles.ContainerP}>
-              <Text style={styles.header}>Pregunta 2</Text>
+          
+          <View style={styles.fixToTextR}>
+              <Text style={styles.Text}>El motor de Crypty está en constante actualización para adaptarse a los últimos avances en IA, incluyendo modelos de generación recientes. Esto asegura que nuestros usuarios obtengan siempre resultados confiables, incluso frente a las tecnologías de generación más nuevas.</Text>
+          </View></View>
+          <View style={styles.fixToTextC}><View style={styles.fixToTextP}>
+              <Text style={styles.header}>¿Es segura la información que subo a Crypty?</Text>
           </View>
-          <View style={styles.ContainerR}>
-              <Text style={styles.Text}>Respuesta 2</Text>
+          <View style={styles.fixToTextR}>
+              <Text style={styles.Text}>Sí, en Crypty la seguridad y privacidad son prioridades. Utilizamos centros de datos con certificaciones de seguridad de alto estándar y aplicamos cifrado avanzado para proteger la transmisión de tus datos, garantizando que tu información esté segura en todo momento.</Text>
+          </View></View>
+          <View style={styles.fixToTextC}><View style={styles.fixToTextP}>
+              <Text style={styles.header}>¿Crypty cumple con normativas de privacidad internacionales?</Text>
           </View>
-
+          <View style={styles.fixToTextR}>
+              <Text style={styles.Text}>¡Claro que sí! Crypty sigue estándares internacionales como el GDPR para proteger los datos de nuestros usuarios, incluyendo opciones para procesar y eliminar los datos de manera segura y bajo normativa, cuando así se necesite.
+              </Text>
+          </View> </View>
+          <View style={styles.fixToTextC}><View style={styles.fixToTextP}>
+              <Text style={styles.header}>¿Por qué elegir Crypty para la detección de contenido manipulado?
+              </Text>
+          </View>
+          
+          <View style={styles.fixToTextR}>
+              <Text style={styles.Text}>Con Crypty, obtienes una combinación única de precisión y seguridad. Nuestro sistema detecta contenido generado por IA con fiabilidad, mientras cumple con altos estándares de privacidad, permitiéndote analizar tus imágenes con confianza y proteger su autenticidad.</Text>
+          </View> </View>
+          
+          
             <TouchableOpacity style={styles.validateButton} onPress={() => navigation.navigate('SelectImage')}>
                 <Text style={styles.buttonText}>Volver al inicio</Text>
             </TouchableOpacity>
+            
             </ImageBackground>
             </View> 
         </View>     
-            
+  
     );
 }
 
 const styles = StyleSheet.create({
+    fixToTextC: {
+        width: 410,
+        justifyContent: 'space-between',
+        alignItems: 'center',
+        backgroundColor: '#1c1c1c',
+        borderRadius: 20,
+        borderColor: '#5400FF',
+        borderWidth: 1,
+        padding: 10,
+        marginBottom: 10,
+      },
+    fixToTextP: {
+        width: 400,
+        justifyContent: 'space-between',
+        alignItems: 'center',
+        backgroundColor: '#1c1c1c',
+        borderRadius: 20,
+        borderColor: '#5400FF',
+        borderWidth: 1,
+        padding: 10,
+        marginBottom: 10,
+      },
+      fixToTextR: {
+        width: 400,
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        alignItems: 'center',
+        backgroundColor: '#1c1c1c',
+        padding: 10,
+        marginBottom: 20,
+      },
     container: {
         flex: 1,
         justifyContent: 'center',
@@ -53,13 +110,13 @@ const styles = StyleSheet.create({
         backgroundColor: '#181818',
     },
     header: {
-        fontSize: 26,
+        fontSize: 18,
         color: 'white',
         marginBottom: 20,
     },
     
     Text: {
-        fontSize: 20,
+        fontSize: 14,
         color: 'white',
         marginBottom: 20,
     },

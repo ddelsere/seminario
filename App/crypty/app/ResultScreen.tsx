@@ -195,7 +195,7 @@ const ColorTexto = (porcentaje:number) => {
         {/* {`La imagen tiene altas probabilidades de ser ${route.params.validationResult >= 0.5 ? 'auténtica' : 'falsa'}.`} */}
         {`La imagen tiene ${porcentaje}% probabilidades de ser generada con IA`}
         <TouchableOpacity style={styles.validateButton2} onPress={() => navigation.navigate('MasInfo')}>
-            <AntDesign name="questioncircleo" size={15} color="black" />
+            <AntDesign name="questioncircleo" size={15} color="orange" />
         </TouchableOpacity>
         </Text></View>
     }else{
@@ -203,7 +203,7 @@ const ColorTexto = (porcentaje:number) => {
         {/* {`La imagen tiene altas probabilidades de ser ${route.params.validationResult >= 0.5 ? 'auténtica' : 'falsa'}.`} */}
         {`La imagen tiene ${porcentaje}% probabilidades de ser generada con IA`}
         <TouchableOpacity style={styles.validateButton2} onPress={() => navigation.navigate('MasInfo')}>
-            <AntDesign name="questioncircleo" size={15} color="black" />
+            <AntDesign name="questioncircleo" size={15} color="orange" />
         </TouchableOpacity>
         </Text></View>
     }

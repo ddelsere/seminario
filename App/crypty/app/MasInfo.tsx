@@ -2,6 +2,7 @@ import React from 'react';
 import { View, Text, Image, TouchableOpacity, StyleSheet,ImageBackground , ActivityIndicator,ScrollView } from 'react-native';
 import { useNavigation, RouteProp } from '@react-navigation/native';
 import { StackNavigationProp } from '@react-navigation/stack';
+import {SafeAreaView, SafeAreaProvider} from 'react-native-safe-area-context';
 
 
 
@@ -19,9 +20,12 @@ export default function MasInfo({ route }: { route: MasInfoRouteProp }) {
     const navigation = useNavigation<MasInfoNavigationProp>();
 
     return (
+        
 
-        <View style={styles.container2}>  
+        <View style={styles.container2}> 
+        <ScrollView>
         <View style={styles.container}>
+
         <ImageBackground source={require('../assets/images/bg.png')} style={styles.background}>
         <View style={styles.fixToTextC}><View style={styles.fixToTextP}>
               <Text style={styles.header}>¿Qué hace única a Crypty en la detección de imágenes generadas por inteligencia artificial?</Text>
@@ -66,8 +70,9 @@ export default function MasInfo({ route }: { route: MasInfoRouteProp }) {
             
             </ImageBackground>
             </View> 
+            </ScrollView>
         </View>     
-  
+       
     );
 }
 
@@ -87,9 +92,9 @@ const styles = StyleSheet.create({
         width: 400,
         justifyContent: 'space-between',
         alignItems: 'center',
-        backgroundColor: '#1c1c1c',
+        backgroundColor: '#5400FF',
         borderRadius: 20,
-        borderColor: '#5400FF',
+        borderColor: '#1c1c1c',
         borderWidth: 1,
         padding: 10,
         marginBottom: 10,
@@ -161,7 +166,7 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
     },
     container2: {
-        flex: 1,
+        height: 1000,
         justifyContent: 'center',
         alignItems: 'center',
         backgroundColor: '#181818',

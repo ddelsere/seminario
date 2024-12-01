@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { View, Text, Image, TouchableOpacity, StyleSheet, ActivityIndicator, Alert, ImageBackground } from 'react-native';
 import { useNavigation, RouteProp } from '@react-navigation/native';
 import { StackNavigationProp } from '@react-navigation/stack';
+
 
 type RootStackParamList = {
   SelectImage: undefined;
@@ -15,9 +16,12 @@ type ValidateUrlScreenRouteProp = RouteProp<RootStackParamList, 'ValidateUrl'>;
 
 export default function ValidateUrlScreen({ route }: { route: ValidateUrlScreenRouteProp }) {
   const navigation = useNavigation<ValidateUrlScreenNavigationProp>();
+  const [url, setUrl] = useState('');
   // const route = useNavigation<ValidateUrlScreenRouteProp>();
   console.log(route.params)
   // const { url } = route.params.url;
+
+
 
   const [loading, setLoading] = React.useState(false);
 

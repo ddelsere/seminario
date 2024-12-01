@@ -184,7 +184,7 @@ const ColorTexto = (porcentaje:number) => {
         return <View style={styles.uploadContainerTrue}> <Text style={styles.resultTextTrue}> 
         
         {/* {`La imagen tiene altas probabilidades de ser ${route.params.validationResult >= 0.5 ? 'auténtica' : 'falsa'}.`} */}
-        {`La imagen tiene ${porcentaje}% probabilidades de ser generada con IA  `}
+        {`La imagen tiene ${porcentaje}% probabilidades de ser generada con Inteligencia Artificial  `}
         <TouchableOpacity style={styles.validateButton2} >
             <AntDesign name="questioncircleo" size={15} color="orange" />
         </TouchableOpacity>
@@ -192,7 +192,7 @@ const ColorTexto = (porcentaje:number) => {
     }else if (porcentaje>66){
         return <View style={styles.uploadContainerFalse}><Text style={styles.resultTextFalse}>
         {/* {`La imagen tiene altas probabilidades de ser ${route.params.validationResult >= 0.5 ? 'auténtica' : 'falsa'}.`} */}
-        {`La imagen tiene ${porcentaje}% probabilidades de ser generada con IA`}
+        {`La imagen tiene ${porcentaje}% probabilidades de ser generada con Inteligencia Artificial`}
         <TouchableOpacity style={styles.validateButton2} >
             <AntDesign name="questioncircleo" size={15} color="black" />
         </TouchableOpacity>
@@ -200,7 +200,7 @@ const ColorTexto = (porcentaje:number) => {
     }else{
         return<View style={styles.uploadContainerInsecure}> <Text style={styles.resultTextInsecure}> 
         {/* {`La imagen tiene altas probabilidades de ser ${route.params.validationResult >= 0.5 ? 'auténtica' : 'falsa'}.`} */}
-        {`La imagen tiene ${porcentaje}% probabilidades de ser generada con IA`}
+        {`La imagen tiene ${porcentaje}% probabilidades de ser generada con Inteligencia Artificial`}
         <TouchableOpacity style={styles.validateButton2} >
             <AntDesign name="questioncircleo" size={15} color="black" />
         </TouchableOpacity>
